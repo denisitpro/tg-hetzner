@@ -13,3 +13,6 @@ secret.tfvars
 .terraform
 *.tfstate.backup
 .terraform.lock.hcl
+
+# terragrunt
+.terragrunt-cache
