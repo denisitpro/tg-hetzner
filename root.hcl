@@ -1,13 +1,28 @@
 # general settings
+# terraform {
+# }
+
 terraform {
-  source = "./tf-modules/hetzner-edu"
+  before_hook "apply_dependencies" {
+    commands = ["apply"]
+    execute = ["terragrunt", "run-all", "apply", "--terragrunt-non-interactive", "--terragrunt-exclude-dir", "."]
+  }
+
+  before_hook "plan_dependencies" {
+    commands = ["plan"]
+    execute = ["terragrunt", "run-all", "apply", "--terragrunt-non-interactive", "--terragrunt-exclude-dir", "."]
+  }
+
+  source = "${get_repo_root()}/tf-modules/hetzner-edu"
 }
 
-inputs = {
-  server_type = "cx22"
-  image       = "ubuntu-24.04"
-  location    = "fsn1"
-}
+# inputs = {
+#   ssh_key_name = "main-ssh-key"
+# }
+
+# variable "den_public_key" {
+#   default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7MRK0SR14QnaopknO/V74zRhlZpbHCX8vefJg1nQha den@pub"
+# }
 
 # remote_state {
 #   backend = "s3"
