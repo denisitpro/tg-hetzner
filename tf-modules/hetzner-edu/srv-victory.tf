@@ -5,7 +5,7 @@ resource "hcloud_server" "vm_srv" {
   image       = "ubuntu-24.04"
   location    = "fsn1"
   ssh_keys = [
-    hcloud_ssh_key.den_ssh_key.id
+   var.ssh_key_id
   ]
   user_data = file("./user_data/user_data_hetzner_v1.sh")
 
