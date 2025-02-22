@@ -23,6 +23,7 @@ terraform {
 }
 
 inputs = {
-  HTZ_TOKEN  = "IGNORE"
+  CF_API_RW_TOKEN = get_env("CF_API_RW_TOKEN")
+  HTZ_TOKEN = get_env("HTZ_TOKEN")
   ssh_key_id = dependency.ssh_key.outputs.ssh_key_id
 }
