@@ -13,5 +13,4 @@ resource "hcloud_server" "k8s_master" {
   lifecycle {
     ignore_changes = [user_data, image]
   }
-
 }
