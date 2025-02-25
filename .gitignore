@@ -4,7 +4,7 @@
 *.idea
 .DS_Store
 *.log
-.vscode
+secret.env
 
 # terraform exclude
 secret.tfvars
@@ -16,3 +16,8 @@ secret.tfvars
 
 # terragrunt
 .terragrunt-cache
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json%

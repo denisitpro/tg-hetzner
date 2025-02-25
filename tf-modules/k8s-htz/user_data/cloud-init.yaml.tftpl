@@ -1,0 +1,10 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+%{ for key in ssh_keys_list }
+      - ${key}
+%{ endfor }
+    lock_passwd: true

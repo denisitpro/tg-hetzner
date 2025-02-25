@@ -1,4 +1,8 @@
 resource "hcloud_ssh_key" "den_ssh_key" {
   name       = "main-ssh-key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7MRK0SR14QnaopknO/V74zRhlZpbHCX8vefJg1nQha den@pub"
+  public_key = var.ssh_keys_map.main_ssh_key
+}
+
+locals {
+  ssh_keys_list = values(var.ssh_keys_map)
 }
