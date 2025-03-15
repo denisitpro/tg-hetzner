@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_repo_root()}/tf-modules/k8s-htz"
+  source = "${get_repo_root()}/tf-modules/k8s-hetzner"
 }
 
 inputs = {
