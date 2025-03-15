@@ -9,12 +9,10 @@ resource "hcloud_load_balancer" "k8s_master_lb" {
 }
 
 resource "hcloud_load_balancer_target" "k8s_master_lb_target" {
-  count            = length(hcloud_server.k8s_master)
-  type             = "server"
+  type             = "label_selector"
   load_balancer_id = hcloud_load_balancer.k8s_master_lb.id
-  server_id        = hcloud_server.k8s_master[count.index].id
+  label_selector   = "k8s_master_lb1"
 }
-
 
 resource "hcloud_load_balancer_service" "k8s_master_lb_service_6443" {
   load_balancer_id = hcloud_load_balancer.k8s_master_lb.id
